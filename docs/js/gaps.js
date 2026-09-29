@@ -7,9 +7,19 @@
     { at: 0.08, name: "IMDM101", gap: null },
     { at: 0.24, name: "IMDM227", gap: "Portfolio review, then a thin middle" },
     { at: 0.42, name: "IMDM290", gap: "Handoff is not required" },
-    { at: 0.62, name: "IMDM390", gap: "Not required before Capstone" },
+    {
+      at: 0.62,
+      name: "IMDM390",
+      gap: "May share the showcase semester",
+      detail: "IMDM390 is not required before Capstone. When it waits until the last spring, it runs concurrent with IMDM491 and the public showcase. Skills learned then have no later course in which to enter the senior project.",
+    },
     { at: 0.78, name: "IMDM490", gap: "Order can skip 390" },
-    { at: 0.92, name: "IMDM491", gap: "Professional practice is concentrated here" },
+    {
+      at: 0.92,
+      name: "IMDM491",
+      gap: "A concurrent 390 arrives too late",
+      detail: "IMDM491 is the showcase semester. The senior project was defined in IMDM490. Studio II taken in this same semester cannot transfer its skills into that project or into the demonstration of advanced understanding.",
+    },
   ];
   const ink = "#1c1915";
   const red = "#8e1d2c";
@@ -20,9 +30,11 @@
     active = index;
     const mark = marks[index];
     if (note) {
-      note.textContent = mark.gap
-        ? mark.name + ". " + mark.gap + ". This is visible on an ordinary path through the published major."
-        : mark.name + ". Shared introduction. The known breaks sit later in the sequence.";
+      note.textContent = mark.detail
+        ? mark.detail
+        : mark.gap
+          ? mark.name + ". " + mark.gap + ". This is visible on an ordinary path through the published major."
+          : mark.name + ". Shared introduction. The known breaks sit later in the sequence.";
     }
   }
   show(active);

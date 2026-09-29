@@ -35,7 +35,7 @@ Registration is shorter. IMDM390 requires IMDM290. IMDM490 also requires IMDM290
 
 | Gap | What the published curriculum does | Kind |
 |---|---|---|
-| **Order** | A student can define the Capstone project before taking the experiential studio the plans place immediately before it. IMDM390 remains required for the degree and can fall beside IMDM491. | Missing preparation, when Capstone assumes research, scale, display, or documentation that the catalog assigns to IMDM390 |
+| **Order** | A student can define the Capstone project before taking the experiential studio the plans place immediately before it. IMDM390 remains required for the degree and can be taken in the last semester, concurrent with IMDM491 and the public showcase. Skills learned in that studio then have no later course in which to enter the senior project or to be shown as advanced understanding. | Missing preparation, when Capstone assumes research, scale, display, or documentation that the catalog assigns to IMDM390 |
 | **Handoff** | Completing the courses in the advised order still does not require an individual outcome to move from IMDM290 to IMDM390, or from IMDM390 to IMDM490. IMDM290 and IMDM390 are team studios. Capstone asks for a project one student can carry for a year. | The sequence can start over at each studio, or it can accept earlier work with no new demand |
 
 Capstone itself continues. IMDM491 receives the project planned in IMDM490. The open break is upstream of that pair.
@@ -102,7 +102,7 @@ IMDM390 is spring-only and IMDM490 is fall-only on the 2024 four-year plans. A s
 What can follow:
 
 - IMDM490 has to teach scale, research, display, or documentation while it is also supposed to produce a plan and prototype for IMDM491.
-- IMDM390 arrives in the spring beside IMDM491, so the experiential studio no longer prepares the project. It runs during the exhibition semester, or the student delays IMDM491 until IMDM390 is done.
+- IMDM390 arrives in the last semester, concurrent with IMDM491 and the public showcase. The experiential studio no longer prepares the project. Skills learned in that studio have no later course in which to enter the senior project or to be shown as advanced understanding. The student can instead delay IMDM491 until IMDM390 is done.
 - The two tracks, already in different advanced courses during the third year, arrive at Capstone with no shared studio since IMDM290.
 
 Track courses, a special topic, or an earlier project may have supplied the missing practice. The curriculum does not guarantee that they have.

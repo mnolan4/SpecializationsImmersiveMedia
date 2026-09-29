@@ -42,7 +42,7 @@ The 86-credit rule makes Capstone a senior course. It does not make IMDM390 the 
 The offering pattern narrows the possible orders without repairing the rule. A student cannot take IMDM390 and IMDM490 in the same semester if one remains spring-only and the other fall-only. The orders the rules allow are:
 
 1. **The advised order.** IMDM290, then IMDM390, then IMDM490, then IMDM491.
-2. **Capstone started first.** IMDM290, then IMDM490, with IMDM390 in a later spring. That spring is often the IMDM491 semester, so Collaborative Studio II runs beside the exhibition semester. IMDM491 can also be delayed until IMDM390 is done.
+2. **Capstone started first.** IMDM290, then IMDM490, with IMDM390 in a later spring. That spring is often the IMDM491 semester, the last semester of the degree. Collaborative Studio II then runs concurrent with Capstone II and the public showcase. The senior project has already been defined. Skills learned in IMDM390 during that semester have no later course in which to enter the project or to be shown as advanced understanding. IMDM491 can also be delayed until IMDM390 is done.
 3. **Capstone finished beside or before the missing studio.** IMDM390 is still required for the degree, so it is completed sometime before graduation. Nothing requires it to be completed before the Capstone project is defined.
 
 How often students use the second and third orders is an advising and enrollment question. The published rules are what make those orders possible.
@@ -83,6 +83,8 @@ A student who enters IMDM490 from IMDM290 has completed a team studio in image a
 
 Those are the capacities IMDM490 then asks students to use on a longer and more independent project. If IMDM390 has not happened, IMDM490 has to build them while it is also supposed to produce a viable plan and prototype for IMDM491. The first Capstone semester absorbs the missing studio, or the student meets the demand without that preparation.
 
+When the missing studio arrives in the IMDM491 semester, the loss is sharper than a missing prerequisite. Collaborative Studio II, Capstone II, and the public showcase occupy the same last semester. Research, scale, display, and documentation taught in IMDM390 are being learned while the senior project is finished and shown. They have no subsequent course in which to transfer into that project, or into what the showcase can treat as advanced understanding.
+
 The loss is shared across tracks, and the substitute preparation is not. Between IMDM290 and the advised semester of IMDM390, Computing students are in IMDM327 and the computer-science core. Emerging Creatives students are in IMDM350 and advanced digital-media coursework. That year is valuable depth. It is not a shared rehearsal for Capstone. IMDM390 is the last common studio the plans put in front of the senior project. When it is not in front, the last common studio is IMDM290, a year or more earlier, and the two tracks arrive at Capstone from different bodies of advanced work.
 
 None of this shows that every student who skipped IMDM390 is unprepared. Track courses, special topics, and prior projects may have supplied the missing practice. The curriculum does not guarantee that they have.
@@ -103,6 +105,7 @@ Under that distinction, the sequence has two different problems:
 |---|---|---|
 | **Order** | IMDM490 can start without IMDM390. | Put the experiential studio before the project is defined. |
 | **Handoff** | No required artifact or decision moves from one course to the next. | Leave each course free to start from zero, or to accept an unchanged project. |
+| **Transfer** | IMDM390 can occupy the last semester, concurrent with IMDM491 and the public showcase. Skills learned then have no later course in which to enter the senior project or the demonstration of advanced understanding. | Place the experiential studio before the project is defined, so the showcase semester can use what Studio II taught. |
 
 Capstone already solves the handoff internally. IMDM491 receives the project IMDM490 planned. The open question is what, if anything, IMDM490 receives from the studios before it.
 

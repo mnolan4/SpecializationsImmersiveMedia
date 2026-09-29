@@ -13,9 +13,9 @@
     n101: ["IMDM101", "Introduction. Shared studio and lecture."],
     n227: ["IMDM227", "Computational media. Both tracks arrive through different prerequisite doors."],
     n290: ["IMDM290", "Collaborative Studio I. The last shared studio Capstone registration is allowed to assume."],
-    n390: ["IMDM390", "Collaborative Studio II. Required for the degree. Not required to begin Capstone."],
-    n490: ["IMDM490", "Capstone I. Requires IMDM290, major standing, and 86 credits."],
-    n491: ["IMDM491", "Capstone II. Continues the project defined in IMDM490."],
+    n390: ["IMDM390", "Collaborative Studio II. Required for the degree. Not required before Capstone. In the last semester, concurrent with the showcase, its skills have no later course in which to enter the senior project."],
+    n490: ["IMDM490", "Capstone I. Requires IMDM290, major standing, and 86 credits. This is where the senior project is defined."],
+    n491: ["IMDM491", "Capstone II and the public showcase. Continues the project defined in IMDM490. Studio II taken in this semester cannot transfer into that demonstration."],
   };
 
   function edgesFor(mode) {
@@ -57,8 +57,8 @@
     const notes = {
       advised: "The four-year plans place Collaborative Studio II before Capstone. The line runs 101, 227, 290, 390, then the two Capstone semesters.",
       registration: "Registration draws a shorter line. IMDM490 requires IMDM290, not IMDM390. The degree still requires 390, but not before the project is defined.",
-      bypass: "A student who reaches 86 credits after IMDM290 can begin Capstone first. Because 390 is spring-only and 490 is fall-only on the current plans, 390 often arrives beside Capstone II.",
-      overview: "The dark line is the advised studio sequence. The red line is the registration shortcut from IMDM290 into Capstone, which does not pass through IMDM390.",
+      bypass: "A student who reaches 86 credits after IMDM290 can begin Capstone first. IMDM390 is spring-only and IMDM490 is fall-only, so Studio II often falls in the last semester, concurrent with IMDM491 and the public showcase. Skills learned in 390 that semester have no later course in which to enter the senior project or to be shown as advanced understanding.",
+      overview: "The dark line is the advised studio sequence. The red line is the registration shortcut from IMDM290 into Capstone. On that path, IMDM390 often shares the last semester with Capstone II and the showcase, after the senior project has been defined.",
     };
 
     function setNote(text) {
@@ -169,7 +169,7 @@
           p.fill(gold);
           p.textSize(11);
           p.textAlign(p.CENTER, p.TOP);
-          p.text("often beside Capstone II", nodes.n390late.x, nodes.n390late.y + 32);
+          p.text("last semester, with the showcase", nodes.n390late.x, nodes.n390late.y + 32);
         }
       };
 
