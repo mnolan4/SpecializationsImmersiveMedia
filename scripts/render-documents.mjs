@@ -71,14 +71,6 @@ const papers = [
     blurb: "The full account of IMDM290, IMDM390, and Capstone, including the last-semester overlap with the showcase.",
   },
   {
-    file: "IMD_Known_Gaps.md",
-    out: "paper-gaps.html",
-    group: "paper",
-    tab: "Known gaps",
-    kicker: "Working paper · September 2026",
-    blurb: "Gaps on an ordinary path through the major, and gaps the rules still allow on a less common route.",
-  },
-  {
     file: "IMD_Specializations_Cross_Committee_Coordination_Framework.md",
     out: "paper-coordination.html",
     group: "paper",
@@ -93,6 +85,14 @@ const papers = [
     tab: "Community",
     kicker: "Essay · September 2026",
     blurb: "Community as the social infrastructure through which coursework acquires memory, permeability, and duration.",
+  },
+  {
+    file: "IMD_Known_Gaps.md",
+    out: "paper-gaps.html",
+    group: "paper",
+    tab: "Known gaps",
+    kicker: "Working paper · September 2026",
+    blurb: "Gaps on an ordinary path through the major, and gaps the rules still allow on a less common route.",
   },
 ];
 
@@ -221,18 +221,17 @@ function titleOf(markdown) {
   return m ? m[1].trim() : "Document";
 }
 
-function tabs(current) {
-  const row = (label, items) => {
-    const links = items.map((item) => {
-      const currentAttr = item.out === current ? ' aria-current="page"' : "";
-      return `<a href="${item.out}"${currentAttr}>${item.tab}</a>`;
-    }).join("\n        ");
-    return `<div class="tabs-row"><span class="tabs-label">${label}</span>\n        ${links}\n      </div>`;
-  };
-  return `<nav class="tabs" aria-label="Documents">
-      ${row("Case studies", papers.filter((p) => p.group === "case"))}
-      ${row("Documents", papers.filter((p) => p.group === "paper"))}
-    </nav>`;
+function primaryNav(current) {
+  const items = [
+    { href: "index.html", label: "Overview" },
+    { href: "specialization.html", label: "Definition" },
+    ...papers.map((paper) => ({ href: paper.out, label: paper.tab })),
+    { href: "continuity.html", label: "Continuity" },
+  ];
+  return items.map((item) => {
+    const currentAttr = item.href === current ? ' aria-current="page"' : "";
+    return `<a href="${item.href}"${currentAttr}>${item.label}</a>`;
+  }).join("\n        ");
 }
 
 function shell({ title, kicker, heading, body, current }) {
@@ -249,18 +248,11 @@ function shell({ title, kicker, heading, body, current }) {
 </head>
 <body class="doc-page">
   <a class="skip" href="#main">Skip to content</a>
-  <header class="top with-tabs">
-    <div class="top-row">
-      <a class="mark" href="index.html">Immersive Media Design <span>Specializations Committee</span></a>
-      <nav aria-label="Primary">
-        <a href="index.html">Overview</a>
-        <a href="specialization.html">Definition</a>
-        <a href="continuity.html">Continuity</a>
-        <a href="gaps.html">Known gaps</a>
-        <a href="documents.html" aria-current="page">Documents</a>
-      </nav>
-    </div>
-    ${tabs(current)}
+  <header class="top">
+    <a class="mark" href="index.html">Immersive Media Design <span>Specializations Committee</span></a>
+    <nav aria-label="Primary">
+        ${primaryNav(current)}
+    </nav>
   </header>
   <main id="main">
     <section class="hero">
