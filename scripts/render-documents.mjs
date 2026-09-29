@@ -221,17 +221,39 @@ function titleOf(markdown) {
   return m ? m[1].trim() : "Document";
 }
 
-function primaryNav(current) {
-  const items = [
-    { href: "index.html", label: "Overview" },
+const navRows = [
+  [
     { href: "specialization.html", label: "Definition" },
-    ...papers.map((paper) => ({ href: paper.out, label: paper.tab })),
-    { href: "continuity.html", label: "Continuity" },
-  ];
-  return items.map((item) => {
-    const currentAttr = item.href === current ? ' aria-current="page"' : "";
-    return `<a href="${item.href}"${currentAttr}>${item.label}</a>`;
-  }).join("\n        ");
+    { href: "paper-definition.html", label: "Specialization" },
+    { href: "cases.html", label: "Case studies", match: ["case-game-design.html", "case-ai.html"] },
+    { href: "paper-map.html", label: "Current-state map" },
+  ],
+  [
+    { href: "paper-editorial.html", label: "Editorial" },
+    { href: "paper-coordination.html", label: "Coordination" },
+    { href: "paper-syllabus.html", label: "Syllabus continuity" },
+    { href: "paper-community.html", label: "Community" },
+    { href: "paper-continuity.html", label: "Studio sequence" },
+    { href: "paper-gaps.html", label: "Known gaps" },
+    { href: "more.html", label: "More", match: ["paper-role.html", "continuity.html", "gaps.html", "documents.html"] },
+  ],
+];
+
+function siteHeader(current) {
+  const row = (label, items) => {
+    const links = items.map((item) => {
+      const on = item.href === current || (item.match || []).includes(current);
+      return `<a href="${item.href}"${on ? ' aria-current="page"' : ""}>${item.label}</a>`;
+    }).join("\n        ");
+    return `<nav aria-label="${label}">\n        ${links}\n      </nav>`;
+  };
+  return `<header class="top">
+    <a class="mark" href="index.html">Immersive Media Design <span>Specializations Committee</span></a>
+    <div class="nav-rows">
+      ${row("Primary", navRows[0])}
+      ${row("Secondary", navRows[1])}
+    </div>
+  </header>`;
 }
 
 function shell({ title, kicker, heading, body, current }) {
@@ -248,12 +270,7 @@ function shell({ title, kicker, heading, body, current }) {
 </head>
 <body class="doc-page">
   <a class="skip" href="#main">Skip to content</a>
-  <header class="top">
-    <a class="mark" href="index.html">Immersive Media Design <span>Specializations Committee</span></a>
-    <nav aria-label="Primary">
-        ${primaryNav(current)}
-    </nav>
-  </header>
+  ${siteHeader(current)}
   <main id="main">
     <section class="hero">
       <p class="kicker">${kicker}</p>
@@ -309,4 +326,39 @@ for (const paper of papers) {
   );
 }
 
-console.log(`wrote documents.html and ${papers.length} document pages`);
+const role = papers.find((p) => p.out === "paper-role.html");
+fs.writeFileSync(
+  path.join(docsDir, "cases.html"),
+  shell({
+    title: "Case studies · IMD Specializations",
+    kicker: "Case studies · September 2026",
+    heading: "Two pilot readings.",
+    body: `<ul class="doc-list">
+        ${papers.filter((p) => p.group === "case").map((p) => `<li><a href="${p.out}">${esc(p.tab)}</a><p>${esc(p.blurb)}</p></li>`).join("\n        ")}
+      </ul>`,
+    current: "cases.html",
+  }),
+);
+fs.writeFileSync(
+  path.join(docsDir, "more.html"),
+  shell({
+    title: "More · IMD Specializations",
+    kicker: "Also in the working draft · September 2026",
+    heading: "The remaining pages.",
+    body: `<ul class="doc-list">
+        <li><a href="paper-role.html">Committee role</a><p>${esc(role.blurb)}</p></li>
+        <li><a href="continuity.html">Continuity</a><p>The studio sequence under the advised order, the registration rules, and the case where Capstone starts first.</p></li>
+        <li><a href="gaps.html">Known gaps diagram</a><p>Breaks on an ordinary path through the published major, and breaks the rules still allow when a student’s route is less common.</p></li>
+      </ul>`,
+    current: "more.html",
+  }),
+);
+
+for (const file of ["index.html", "specialization.html", "continuity.html", "gaps.html"]) {
+  const pathName = path.join(docsDir, file);
+  const html = fs.readFileSync(pathName, "utf8");
+  const next = html.replace(/<header class="top">[\s\S]*?<\/header>/, siteHeader(file));
+  fs.writeFileSync(pathName, next);
+}
+
+console.log(`wrote documents.html, cases.html, more.html, and ${papers.length} document pages`);
