@@ -72,7 +72,8 @@
         p.textSize(13);
         p.textAlign(p.CENTER, pos.y < center.y ? p.BOTTOM : p.TOP);
         const labelY = pos.y + (pos.y < center.y ? -16 : 16);
-        p.text(item[0], pos.x, labelY);
+        const labelX = pos.x + (item[0] === "Developmental" ? 40 : 0);
+        p.text(item[0], labelX, labelY);
       });
 
       p.noStroke();
