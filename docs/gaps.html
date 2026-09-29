@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Known gaps · IMD Specializations</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,480;6..72,560&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="top">
+    <a class="mark" href="index.html">Immersive Media Design <span>Specializations Committee</span></a>
+    <nav aria-label="Primary">
+      <a href="index.html">Overview</a>
+      <a href="specialization.html">Definition</a>
+      <a href="continuity.html">Continuity</a>
+      <a href="gaps.html" aria-current="page">Known gaps</a>
+    </nav>
+  </header>
+  <main id="main">
+    <section class="hero">
+      <p class="kicker">Published curriculum · September 2026</p>
+      <h1>Gaps already visible, and gaps the rules still allow.</h1>
+      <p class="lede">A known gap appears on an ordinary path through the major. A possible gap appears when a less common route is still permitted. Neither list is yet a count of how often students meet it.</p>
+    </section>
+    <section class="section">
+      <h2>On the ordinary path</h2>
+      <div class="prose">
+        <p>Select a point on the sequence. The marks are features of the published curriculum for a student who follows the four-year plan and stays on one degree track.</p>
+      </div>
+      <div class="viz">
+        <div id="gaps-canvas"></div>
+        <p id="gaps-note" class="viz-note"></p>
+      </div>
+    </section>
+    <section class="section prose">
+      <h2>Already known</h2>
+      <ul class="plain">
+        <li><strong>Order.</strong> IMDM490 can begin without IMDM390. Studio II remains required for the degree and can fall beside Capstone II.</li>
+        <li><strong>Handoff.</strong> The advised order still does not require an individual outcome to move from IMDM290 to IMDM390, or from IMDM390 to IMDM490.</li>
+        <li><strong>Clusters rather than paths.</strong> Games, extended reality, artificial intelligence, interaction, physical computing, three-dimensional work, sound, and creative research are present as pieces. Game design and artificial intelligence lack a shared introduction that both tracks can enter, and their clearest advanced courses sit behind Computing prerequisites.</li>
+        <li><strong>A thin middle.</strong> Portfolio work is explicit at the third-semester review and again at exhibition. Professional practice is concentrated in Capstone. Published materials do not say which facilities every student who finishes a given course has used.</li>
+        <li><strong>Two doors into shared courses.</strong> IMDM227 can be reached by IMDM101 with CMSC131, or by IMDM127 with CMSC122. A shared studio that assumes only one of those preparations is ahead of the other track.</li>
+      </ul>
+      <h2>Less common routes</h2>
+      <p>The same rules become sharper when a student reaches 86 credits before the advised semester of IMDM390, misses a spring-only studio, finds an area only in Capstone, leaves a team project with no individual record, or can reach advanced work only through a special topic, a permission seat, or whichever facility that section’s project happened to use.</p>
+      <p>Prior credit can satisfy a prerequisite line without supplying the introductory studio experience the next IMDM course expects. An advising conversation can make a path real for one student and leave it invisible to another. Under the definition, a path that depends on private knowledge is still a cluster.</p>
+      <p>Faculty sheets can confirm whether a published gap is what every student in an offering actually meets. The student worksheet can show where students wanted to go further and the order in which they took IMDM290, IMDM390, and Capstone. Offering records can show how often Capstone starts without Studio II.</p>
+    </section>
+  </main>
+  <footer class="footer">
+    <hr class="rule">
+    <p>The list records the gaps. It does not choose whether IMDM390 should be required before Capstone, what should cross from one studio to the next, or which clusters to build first.</p>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.11.3/lib/p5.min.js"></script>
+  <script src="js/gaps.js"></script>
+</body>
+</html>
