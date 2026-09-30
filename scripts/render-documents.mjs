@@ -79,6 +79,14 @@ const papers = [
     blurb: "How Specializations shares decisions with Coding, Portfolio, Labs, IMDM101, and Vision.",
   },
   {
+    file: "Priority_Case_for_Expanded_Course_Offerings.md",
+    out: "paper-offerings.html",
+    group: "paper",
+    tab: "Expanded offerings",
+    kicker: "Working paper · September 2026",
+    blurb: "IMDM227 is the first candidate for a fall and spring offering. IMDM290 is the next, if a once-a-year studio becomes the bottleneck.",
+  },
+  {
     file: "Community_as_Continuity.md",
     out: "paper-community.html",
     group: "paper",
@@ -221,39 +229,98 @@ function titleOf(markdown) {
   return m ? m[1].trim() : "Document";
 }
 
-const navRows = [
-  [
-    { href: "specialization.html", label: "Definition" },
-    { href: "paper-definition.html", label: "Specialization" },
-    { href: "cases.html", label: "Case studies", match: ["case-game-design.html", "case-ai.html"] },
-    { href: "paper-map.html", label: "Current-state map" },
-  ],
-  [
-    { href: "paper-editorial.html", label: "Editorial" },
-    { href: "paper-coordination.html", label: "Coordination" },
-    { href: "paper-syllabus.html", label: "Syllabus continuity" },
-    { href: "paper-community.html", label: "Community" },
-    { href: "paper-continuity.html", label: "Studio sequence" },
-    { href: "paper-gaps.html", label: "Known gaps" },
-    { href: "more.html", label: "More", match: ["paper-role.html", "continuity.html", "gaps.html", "documents.html"] },
-  ],
+function link(item, current) {
+  const on = item.href === current || (item.match || []).includes(current);
+  return `<a href="${item.href}"${on ? ' aria-current="page"' : ""}>${item.label}</a>`;
+}
+
+function menu(label, items, current) {
+  const here = items.some((item) => item.href === current || (item.match || []).includes(current));
+  const links = items.map((item) => link(item, current)).join("\n          ");
+  return `<details class="menu">
+        <summary${here ? ' class="is-here"' : ""}>${label}</summary>
+        <div class="menu-panel">
+          ${links}
+        </div>
+      </details>`;
+}
+
+const NAV = [
+  { href: "index.html", label: "Overview" },
+  { href: "priorities.html", label: "Priorities", match: ["paper-role.html"] },
+  {
+    href: "pathways.html",
+    label: "Pathways",
+    match: ["specialization.html", "paper-definition.html", "case-game-design.html", "case-ai.html", "paper-map.html"],
+  },
+  {
+    href: "students.html",
+    label: "Student experience",
+    match: ["continuity.html", "paper-continuity.html", "gaps.html", "paper-gaps.html"],
+  },
+  { href: "proposals.html", label: "Proposals", match: ["paper-offerings.html"] },
+  {
+    href: "research.html",
+    label: "Research",
+    quiet: true,
+    match: ["paper-editorial.html", "paper-community.html", "paper-coordination.html", "paper-syllabus.html", "documents.html"],
+  },
 ];
 
+const pageNotes = {
+  "paper-offerings.html": {
+    status: "Draft proposal",
+    impact: "A student who misses IMDM227, or who enters off-cycle, can wait a year before the intermediate sequence begins. That wait reaches later requirements and time to degree. IMDM290 is the next bottleneck to examine, not a second expansion already decided.",
+  },
+  "paper-continuity.html": {
+    status: "Under discussion",
+    impact: "When Studio II falls in the showcase semester, the senior project is already defined. Skills learned then have no later course in which to enter that project or the public demonstration.",
+  },
+  "case-ai.html": {
+    status: "Active",
+    impact: "The clearest advanced AI courses sit behind substantial computing prerequisites. A pathway has to say which students can enter, and what preparation the other track still needs.",
+  },
+  "case-game-design.html": {
+    status: "Active",
+    impact: "Game work is already in the curriculum as pieces. A student still assembles the route, and the clearest advanced course is easier to reach from the Computing track.",
+  },
+  "paper-gaps.html": {
+    status: "Active",
+    impact: "The gaps are about whether a student can progress, change direction, and still reach Capstone on a path the curriculum makes visible.",
+  },
+  "paper-definition.html": {
+    status: "Active",
+    impact: "A student who finds a direction needs a route they can see. A student who is still exploring needs the shared path to Capstone to stay open.",
+  },
+  "paper-map.html": { status: "Background" },
+  "paper-editorial.html": { status: "Research" },
+  "paper-community.html": { status: "Research" },
+  "paper-coordination.html": { status: "Background" },
+  "paper-syllabus.html": { status: "Background" },
+  "paper-role.html": { status: "Active" },
+};
+
 function siteHeader(current) {
-  const row = (label, items) => {
-    const links = items.map((item) => {
-      const on = item.href === current || (item.match || []).includes(current);
-      return `<a href="${item.href}"${on ? ' aria-current="page"' : ""}>${item.label}</a>`;
-    }).join("\n        ");
-    return `<nav aria-label="${label}">\n        ${links}\n      </nav>`;
-  };
+  const links = NAV.map((item) => {
+    const on = item.href === current || (item.match || []).includes(current);
+    const quiet = item.quiet ? ' class="is-quiet"' : "";
+    const currentAttr = on ? ' aria-current="page"' : "";
+    return `<a href="${item.href}"${quiet}${currentAttr}>${item.label}</a>`;
+  }).join("\n      ");
   return `<header class="top">
     <a class="mark" href="index.html">Immersive Media Design <span>Specializations Committee</span></a>
-    <div class="nav-rows">
-      ${row("Primary", navRows[0])}
-      ${row("Secondary", navRows[1])}
-    </div>
+    <nav class="menu-bar" aria-label="Primary">
+      ${links}
+    </nav>
   </header>`;
+}
+
+function pageNote(current) {
+  const note = pageNotes[current];
+  if (!note) return "";
+  const badge = note.status ? `<p class="badge">${esc(note.status)}</p>` : "";
+  const impact = note.impact ? `<p><strong>Why this matters for students.</strong> ${esc(note.impact)}</p>` : "";
+  return `<aside class="impact">${badge}${impact}</aside>`;
 }
 
 function shell({ title, kicker, heading, body, current }) {
@@ -276,6 +343,7 @@ function shell({ title, kicker, heading, body, current }) {
       <p class="kicker">${kicker}</p>
       <h1>${esc(heading)}</h1>
     </section>
+    ${pageNote(current)}
     <article class="section doc-body">
 ${body}
     </article>
@@ -326,39 +394,11 @@ for (const paper of papers) {
   );
 }
 
-const role = papers.find((p) => p.out === "paper-role.html");
-fs.writeFileSync(
-  path.join(docsDir, "cases.html"),
-  shell({
-    title: "Case studies · IMD Specializations",
-    kicker: "Case studies · September 2026",
-    heading: "Two pilot readings.",
-    body: `<ul class="doc-list">
-        ${papers.filter((p) => p.group === "case").map((p) => `<li><a href="${p.out}">${esc(p.tab)}</a><p>${esc(p.blurb)}</p></li>`).join("\n        ")}
-      </ul>`,
-    current: "cases.html",
-  }),
-);
-fs.writeFileSync(
-  path.join(docsDir, "more.html"),
-  shell({
-    title: "More · IMD Specializations",
-    kicker: "Also in the working draft · September 2026",
-    heading: "The remaining pages.",
-    body: `<ul class="doc-list">
-        <li><a href="paper-role.html">Committee role</a><p>${esc(role.blurb)}</p></li>
-        <li><a href="continuity.html">Continuity</a><p>The studio sequence under the advised order, the registration rules, and the case where Capstone starts first.</p></li>
-        <li><a href="gaps.html">Known gaps diagram</a><p>Breaks on an ordinary path through the published major, and breaks the rules still allow when a student’s route is less common.</p></li>
-      </ul>`,
-    current: "more.html",
-  }),
-);
-
-for (const file of ["index.html", "specialization.html", "continuity.html", "gaps.html"]) {
+for (const file of ["index.html", "specialization.html", "continuity.html", "gaps.html", "priorities.html", "pathways.html", "students.html", "proposals.html", "research.html"]) {
   const pathName = path.join(docsDir, file);
   const html = fs.readFileSync(pathName, "utf8");
   const next = html.replace(/<header class="top">[\s\S]*?<\/header>/, siteHeader(file));
   fs.writeFileSync(pathName, next);
 }
 
-console.log(`wrote documents.html, cases.html, more.html, and ${papers.length} document pages`);
+console.log(`wrote documents.html and ${papers.length} document pages`);
